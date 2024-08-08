@@ -68,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "this" {
     }
   }
   dynamic "admin_ssh_key" {
-    for_each = { for key in local.admin_ssh_keys : key.username => key }
+    for_each = local.admin_ssh_keys
 
     content {
       public_key = admin_ssh_key.value.public_key
